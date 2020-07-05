@@ -10,6 +10,6 @@ So now, instead of “Would you like to speak to a customer representative?” w
 
 To take it a step further, the project shall use the Smart Document Understanding feature of Watson Discovery to train it on what text in the owners manual is important and what is not. This will improve the answers returned from the queries. Then using Watson actions as webhook, Watson Discovery can be integrated with Watson assistant. Finally using Node-Red, Watson assistant can be integrated with a web UI. This UI can then be used to connect with Watson assistant and chat with it.
 
-YouTube link: https://youtu.be/8LG9bPPZN78
+YouTube link: https://www.youtube.com/watch?v=_hlN_ahPt_I&feature=youtu.be
 
 Node RED Dashbaord : https://node-red-fnsst.eu-gb.mybluemix.net/ui/#!/0?socketid=QCwgD-dJkm1X3xZaAABZ
