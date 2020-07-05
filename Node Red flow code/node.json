@@ -1,0 +1,194 @@
+[
+    {
+        "id": "31bdfe9c.c2dc72",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f2f2649a.0d0d98",
+        "type": "debug",
+        "z": "31bdfe9c.c2dc72",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "5de83f4d.ba0698",
+        "type": "ui_form",
+        "z": "31bdfe9c.c2dc72",
+        "name": "",
+        "label": "",
+        "group": "d0bc5b73.db0cd",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "need help",
+                "value": "help",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "help": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 70,
+        "y": 240,
+        "wires": [
+            [
+                "547e363.9c296c8"
+            ]
+        ]
+    },
+    {
+        "id": "547e363.9c296c8",
+        "type": "function",
+        "z": "31bdfe9c.c2dc72",
+        "name": "",
+        "func": "msg.payload = msg.payload.help;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 210,
+        "y": 180,
+        "wires": [
+            [
+                "f00e9dec.55098",
+                "cc88e1f.e1e7b2"
+            ]
+        ]
+    },
+    {
+        "id": "7e7afcb3.2a2e44",
+        "type": "function",
+        "z": "31bdfe9c.c2dc72",
+        "name": "",
+        "func": "msg.payload.text = \"\";\n\nif(msg.payload.context.webhook_result_1)\n{\n//    for(var i in msg.payload.context.webhook_result_1.results)\n  //  {\n       \n            msg.payload.text=msg.payload.text+\"<br>\"+msg.payload.context.webhook_result_1.results[0].subtitle;\n            msg.payload.text = msg.payload.text+\"<br>\"+\"<br>\"+msg.payload.context.webhook_result_1.results[0].text;\n    \n        \n  //  }\n    msg.payload = msg.payload.text;\n}\nelse\nmsg.payload = msg.payload.output.text[0];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 510,
+        "y": 200,
+        "wires": [
+            [
+                "fab4d636.2848b8",
+                "935bf652.0d23f8"
+            ]
+        ]
+    },
+    {
+        "id": "f00e9dec.55098",
+        "type": "watson-conversation-v1",
+        "z": "31bdfe9c.c2dc72",
+        "name": "",
+        "workspaceid": "af4f367c-8878-44cb-802b-3b9a1ae8a70b",
+        "multiuser": false,
+        "context": true,
+        "empty-payload": false,
+        "service-endpoint": "https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/0baad8b1-d14d-414a-b83f-899e6eab07ec",
+        "timeout": "",
+        "optout-learning": false,
+        "x": 370,
+        "y": 100,
+        "wires": [
+            [
+                "7e7afcb3.2a2e44",
+                "f2f2649a.0d0d98"
+            ]
+        ]
+    },
+    {
+        "id": "fab4d636.2848b8",
+        "type": "ui_text",
+        "z": "31bdfe9c.c2dc72",
+        "group": "557e3913.22757",
+        "order": 5,
+        "width": "10",
+        "height": "9",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 670,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "cc88e1f.e1e7b2",
+        "type": "ui_text",
+        "z": "31bdfe9c.c2dc72",
+        "group": "d0bc5b73.db0cd",
+        "order": 4,
+        "width": "4",
+        "height": "3",
+        "name": "",
+        "label": "help",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 270,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "935bf652.0d23f8",
+        "type": "ui_audio",
+        "z": "31bdfe9c.c2dc72",
+        "name": "",
+        "group": "557e3913.22757",
+        "voice": "en-GB",
+        "always": "",
+        "x": 730,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "d0bc5b73.db0cd",
+        "type": "ui_group",
+        "z": "",
+        "name": "Ask question",
+        "tab": "bad1931d.c1066",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "557e3913.22757",
+        "type": "ui_group",
+        "z": "",
+        "name": "bot",
+        "tab": "bad1931d.c1066",
+        "order": 1,
+        "disp": true,
+        "width": "10",
+        "collapse": false
+    },
+    {
+        "id": "bad1931d.c1066",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Customer",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
