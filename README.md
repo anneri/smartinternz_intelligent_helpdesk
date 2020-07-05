@@ -12,4 +12,4 @@ To take it a step further, the project shall use the Smart Document Understandin
 
 YouTube link: https://youtu.be/8LG9bPPZN78
 
-Node RED Dashbaord : https://node-red-safraan.eu-gb.mybluemix.net/ui
+Node RED Dashbaord : https://node-red-fnsst.eu-gb.mybluemix.net/ui/#!/0?socketid=QCwgD-dJkm1X3xZaAABZ
